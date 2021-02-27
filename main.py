@@ -4,7 +4,7 @@ import random
 global failures
 global passes
 doc = open("PENISES.txt","a")
-
+os.system('chmod 777 ncat')
 def genIP():
     ipGroup = []
     for i in range(4):
