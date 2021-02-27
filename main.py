@@ -19,22 +19,28 @@ def genIP():
         else:
             ipGroup.append(str(random.randint(1,180)))
     return ".".join(ipGroup)
-def pingIP(times,trip,port):
+def pingIP(trip,port):
     failures = 0
     passes = 0
     liveIPs = []
-    for i in range(times):
+    while True:
         time.sleep(int(os.environ["WAIT"]))
         ip = genIP()
         print("I Am Do" + str(ip))
-        ping = os.system("./ncat -w 2 " + str(ip) + " " + str(port))
+        ping = os.system("ping " + str(ip))
+        
         if ping == 1:
             print("EPIC FAIL! for " + ip )
             failures += 1
         elif ping == 0:
-            print("WIN!!!")
-            doc.write(ip + "\n")
-            requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":80"})
-            passes += 1
-pingIP(1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,1,80)
-doc.close()
+            print("Oh! And the IP is exist!")
+            print("Time To Check For De ports boi")
+            for i in len(port):
+                penis = os.system("./ncat -w 2 " + str(ip) + " " + str(port[i]))
+                if penis = 1:
+                    print("No Have " + port[i])
+                if penis = 0:
+                    doc.write(ip + ":" + port[i] + "\n")
+                    requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + port[i]})
+                    passes += 1
+pingIP(1,["80","443","22","8000","8080","5000"])
