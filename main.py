@@ -4,6 +4,9 @@ import random
 global failures
 global passes
 import subprocess
+import time
+#How much to sleep between each request (affects all scripts)
+os.environ["WAIT"] = "1"
 imgur = subprocess.Popen(["python","imgur.py"])
 doc = open("PENISES.txt","a")
 os.system('chmod 777 ncat')
@@ -21,6 +24,7 @@ def pingIP(times,trip,port):
     passes = 0
     liveIPs = []
     for i in range(times):
+        time.sleep(os.environ["WAIT"])
         ip = genIP()
         print("I Am Do" + str(ip))
         ping = os.system("./ncat -w 2 " + str(ip) + " " + str(port))
