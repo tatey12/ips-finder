@@ -39,6 +39,7 @@ def genurls(byte, amount, urlsuffix):
     urlsuffix = '_d'
   try:
     while True:
+      time.sleep(os.environ["WAIT"])
       randerps = rand(byte)
       url2 = urlformat.format(randerps,urlsuffix)
       r = requests.get(url2)
