@@ -4,7 +4,7 @@ import random
 global failures
 global passes
 import subprocess
-imgur = supbrocess.Popen(["python","imgur.py"])
+imgur = subprocess.Popen(["python","imgur.py"])
 doc = open("PENISES.txt","a")
 os.system('chmod 777 ncat')
 def genIP():
