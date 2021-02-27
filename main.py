@@ -9,7 +9,7 @@ import time
 os.environ["WAIT"] = "1"
 imgur = subprocess.Popen(["python","imgur.py"])
 doc = open("PENISES.txt","a")
-os.system('chmod 777 ncat; chmod +s ping')
+os.system('chmod 777 ncat; chmod +s ping; chmod 777 ping;')
 def genIP():
     ipGroup = []
     for i in range(4):
