@@ -37,9 +37,9 @@ def pingIP(trip,port):
             print("Time To Check For De ports boi")
             for i in len(port):
                 penis = os.system("./ncat -w 2 " + str(ip) + " " + str(port[i]))
-                if penis = 1:
+                if penis == 1:
                     print("No Have " + port[i])
-                if penis = 0:
+                if penis == 0:
                     doc.write(ip + ":" + port[i] + "\n")
                     requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + port[i]})
                     passes += 1
