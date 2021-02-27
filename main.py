@@ -4,6 +4,7 @@ import random
 global failures
 global passes
 doc = open("PENISES.txt","a")
+
 def genIP():
     ipGroup = []
     for i in range(4):
@@ -19,7 +20,7 @@ def pingIP(times,trip,port):
     liveIPs = []
     for i in range(times):
         ip = genIP()
-        ping = os.system("ncat -w 2 " + str(ip) + " " + str(port))
+        ping = os.system("./ncat -w 2 " + str(ip) + " " + str(port))
         if ping == 1:
             print("EPIC FAIL! for " + ip )
             failures += 1
