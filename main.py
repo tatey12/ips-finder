@@ -30,5 +30,5 @@ def pingIP(times,trip,port):
             doc.write(ip + "\n")
             requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":80"})
             passes += 1
-pingIP(100,1,80)
+pingIP(1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,1,80)
 doc.close()
