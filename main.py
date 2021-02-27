@@ -24,7 +24,7 @@ def pingIP(times,trip,port):
     passes = 0
     liveIPs = []
     for i in range(times):
-        time.sleep(os.environ["WAIT"])
+        time.sleep(int(os.environ["WAIT"]))
         ip = genIP()
         print("I Am Do" + str(ip))
         ping = os.system("./ncat -w 2 " + str(ip) + " " + str(port))
