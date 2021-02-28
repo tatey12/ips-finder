@@ -23,18 +23,23 @@ def pingIP(trip,port):
     failures = 0
     passes = 0
     liveIPs = []
-    while True:
-        time.sleep(int(os.environ["WAIT"]))
-        ip = genIP()
-        print("I Am Do" + str(ip))
-        ping = os.system("./ncat -w 2 " + str(ip) + " " + str(port))
-        if ping == 1:
-            print("EPIC FAIL! for " + ip )
-            failures += 1
-        elif ping == 0:
-            print("WIN!!!")
-            doc.write(ip + "\n")
-            requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":80"})
-            passes += 1
-pingIP(1,80)
-doc.close()
+    time.sleep(int(os.environ["WAIT"]))
+    ip = genIP()
+    print("I Am Do" + str(ip) + " on port " + str(port))
+    ping = os.system("./ncat -w 2 " + str(ip) + " " + str(port))
+    if ping == 1:
+        print("EPIC FAIL! for " + ip )
+        failures += 1
+    elif ping == 0:
+        print("WIN!!!")
+        doc.write(ip + "\n")
+        requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":80"})
+        passes += 1
+    doc.close()
+while True:
+    pingIP(1,80)
+    pingIP(1,8000)
+    pingIP(1,443)
+    pingIP(1,22)
+    pingIP(1,5000)
+#Penis Mario Gaming.
