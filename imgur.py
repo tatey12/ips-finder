@@ -50,7 +50,7 @@ def genurls(byte, amount, urlsuffix):
         passes += 1
         print("PASS for " + str(url2) + " Total " + str(passes) + " passes.")
         discord = requests.post(os.environ["imgur"],data={"content":str(url2)})
-        discord = requests.post(os.environ["secondary_imgur"],data={"content":str(url2)})
+        discord2 = requests.post(os.environ["secondary_imgur"],data={"content":str(url2)})
         time.sleep(.75)
       if hashlib.sha256(r.content).hexdigest() ==  monopolyhash:
         monopolies += 1
