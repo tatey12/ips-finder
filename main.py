@@ -34,7 +34,7 @@ def pingIP(trip,port):
         print("WIN!!!")
         requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":" + str(port)})
         passes += 1
-        driver = webdriver.Firefox()
+        driver = webdriver.Firefox(executable_path=r'./geckodriver')
         driver.get('http://' + str(ip))
         driver.get_screenshot_as_file("screenshot.png")
         files = {'file': open('screenshot.png', 'rb')}
