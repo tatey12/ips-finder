@@ -34,15 +34,16 @@ def pingIP(trip,port):
     elif ping == 0:
         print("WIN!!!")
         requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":" + str(port)})
+        requests.post("https://canary.discord.com/api/webhooks/778773447274528768/dHQaxbNAfuzuNZbeA263FhW4jjdQPBebo11VSW5n7LGHPCWKfDkn3uXdreiBfeHYNrRd",data={"content":"http://" + str(ip) + ":" + str(port)})
         passes += 1
-        try:
-            driver = webdriver.Chrome()
-            driver.get('http://' + str(ip))
-            driver.get_screenshot_as_file("screenshot.png")
-            files = {'file': open('screenshot.png', 'rb')}
-            requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",files=files)
-            driver.quit()
-        except:
-            requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"Donkey Kong Banana's Error: \n ```" + sys.exc_info()[0] + "```"})
+        #try:
+        #    driver = webdriver.Chrome()
+        #    driver.get('http://' + str(ip))
+        #    driver.get_screenshot_as_file("screenshot.png")
+        #    files = {'file': open('screenshot.png', 'rb')}
+        #    requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",files=files)
+        #    driver.quit()
+        #except:
+        #    requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"Donkey Kong Banana's Error: \n ```" + sys.exc_info()[0] + "```"})
 while True:
     pingIP(1,80)
