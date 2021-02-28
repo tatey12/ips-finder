@@ -23,7 +23,7 @@ def pingIP(trip,port):
     failures = 0
     passes = 0
     liveIPs = []
-    whileTrue:
+    while True:
         time.sleep(os.environ["WAIT"])
         ip = genIP()
         print("I Am Do" + str(ip))
