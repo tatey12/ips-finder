@@ -5,12 +5,11 @@ global failures
 global passes
 import subprocess
 import time
-from icmplib import ping
 #How much to sleep between each request (affects all scripts)
 os.environ["WAIT"] = "1"
 imgur = subprocess.Popen(["python","imgur.py"])
 doc = open("PENISES.txt","a")
-os.system('chmod 777 ncat; chmod 777 nping;')
+os.system('chmod 777 ncat')
 def genIP():
     ipGroup = []
     for i in range(4):
@@ -24,24 +23,19 @@ def pingIP(trip,port):
     failures = 0
     passes = 0
     liveIPs = []
-    while True:
-        time.sleep(int(os.environ["WAIT"]))
-        ip = genIP()
-        print("I Am Do" + str(ip))
-        #ping = os.system("./nping " + str(ip))
-        pingPENIS = ping(str(ip),count=1)
-        if pingPENIS.is_alive == False:
-            print("EPIC FAIL! for " + ip )
-            failures += 1
-        else:
-            print("Oh! And the IP is exist!")
-            print("Time To Check For De ports boi")
-            for i in range(len(port)):
-                penis = os.system("./ncat -w 2 " + str(ip) + " " + str(port[i]))
-                if penis == 1:
-                    print("No Have " + port[i])
-                if penis == 0:
-                    doc.write(ip + ":" + port[i] + "\n")
-                    requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + port[i]})
-                    passes += 1
-pingIP(1,["80","443","22","8000","8080","5000"])
+    time.sleep(int(os.environ["WAIT"]))
+    ip = genIP()
+    print("I Am Do" + str(ip) + " on port " + str(port))
+    ping = os.system("./ncat -w 2 " + str(ip) + " " + str(port))
+    if ping == 1:
+        print("EPIC FAIL! for " + ip )
+        failures += 1
+    elif ping == 0:
+        print("WIN!!!")
+        doc.write(ip + "\n")
+        requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":" + str(port)})
+        passes += 1
+    doc.close()
+while True:
+    pingIP(1,80)
+#Penis Mario Gaming.
