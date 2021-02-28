@@ -7,6 +7,7 @@ import subprocess
 import time
 import chromedriver_binary
 from selenium import webdriver
+import sys
 #How much to sleep between each request (affects all scripts)
 os.environ["WAIT"] = "2"
 imgur = subprocess.Popen(["python","imgur.py"])
@@ -35,11 +36,14 @@ def pingIP(trip,port):
         print("WIN!!!")
         requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":" + str(port)})
         passes += 1
-        driver = webdriver.Chrome()
-        driver.get('http://' + str(ip))
-        driver.get_screenshot_as_file("screenshot.png")
-        files = {'file': open('screenshot.png', 'rb')}
-        requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",files=files)
-        driver.quit()
+        try:
+            driver = webdriver.Chrome()
+            driver.get('http://' + str(ip))
+            driver.get_screenshot_as_file("screenshot.png")
+            files = {'file': open('screenshot.png', 'rb')}
+            requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",files=files)
+            driver.quit()
+        except:
+            requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"Donkey Kong Banana's Error: \n ```" + sys.exc_info()[0] + "```"})
 while True:
     pingIP(1,80)
