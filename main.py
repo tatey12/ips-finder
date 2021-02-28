@@ -5,7 +5,6 @@ global failures
 global passes
 import subprocess
 import time
-import chromedriver_binary
 from selenium import webdriver
 import sys
 #How much to sleep between each request (affects all scripts)
