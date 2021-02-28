@@ -6,9 +6,8 @@ global passes
 import subprocess
 import time
 #How much to sleep between each request (affects all scripts)
-os.environ["WAIT"] = "1"
+os.environ["WAIT"] = "2"
 imgur = subprocess.Popen(["python","imgur.py"])
-doc = open("PENISES.txt","a")
 os.system('chmod 777 ncat')
 def genIP():
     ipGroup = []
@@ -32,10 +31,7 @@ def pingIP(trip,port):
         failures += 1
     elif ping == 0:
         print("WIN!!!")
-        doc.write(ip + "\n")
         requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":" + str(port)})
         passes += 1
-    doc.close()
 while True:
     pingIP(1,80)
-#Penis Mario Gaming.
