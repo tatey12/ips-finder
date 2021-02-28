@@ -29,8 +29,8 @@ def pingIP(trip,port):
         ip = genIP()
         print("I Am Do" + str(ip))
         #ping = os.system("./nping " + str(ip))
-        ping = ping(str(ip),count=1)
-        if ping.is_alive == False:
+        pingPENIS = ping(str(ip),count=1)
+        if pingPENIS.is_alive == False:
             print("EPIC FAIL! for " + ip )
             failures += 1
         else:
