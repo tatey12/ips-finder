@@ -34,7 +34,7 @@ def pingIP(trip,port):
     elif ping == 0:
         print("WIN!!!")
         requests.post("https://canary.discord.com/api/webhooks/815337051293614101/eNTPpsp0YkqlONrRRaYAmTRw4cq03EsOmUHAy7a-DR6vQ6fX_Iu56fQMahT_M2rCXW5k",data={"content":"http://" + str(ip) + ":" + str(port)})
-        requests.post("https://canary.discord.com/api/webhooks/778773447274528768/dHQaxbNAfuzuNZbeA263FhW4jjdQPBebo11VSW5n7LGHPCWKfDkn3uXdreiBfeHYNrRd",data={"content":"http://" + str(ip) + ":" + str(port)})
+        requests.post("https://canary.discord.com/api/webhooks/755152681609461792/jos2w2cx2NSq3hHTuyeMxEBWY_XScOwQdCiZX9VtVbD9hAtOBVJnmVIT8U1XKh6Z09qf",data={"content":"http://" + str(ip) + ":" + str(port)})
         passes += 1
         #try:
         #    driver = webdriver.Chrome()
